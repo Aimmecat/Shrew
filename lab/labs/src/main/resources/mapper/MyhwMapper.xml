@@ -1,0 +1,178 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.edu.sdu.ise.labs.dao.MyhwMapper" >
+  <resultMap id="BaseResultMap" type="cn.edu.sdu.ise.labs.model.Myhw" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="equipment_name" property="equipmentName" jdbcType="VARCHAR" />
+    <result column="equipment_value" property="equipmentValue" jdbcType="VARCHAR" />
+    <result column="user_people" property="userPeople" jdbcType="VARCHAR" />
+    <result column="home_id" property="homeId" jdbcType="VARCHAR" />
+    <result column="deleted" property="deleted" jdbcType="TINYINT" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, equipment_name, equipment_value, user_people, home_id, deleted
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from myhw
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from myhw
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="cn.edu.sdu.ise.labs.model.Myhw" >
+    insert into myhw (id, equipment_name, equipment_value, 
+      user_people, home_id, deleted
+      )
+    values (#{id,jdbcType=INTEGER}, #{equipmentName,jdbcType=VARCHAR}, #{equipmentValue,jdbcType=VARCHAR}, 
+      #{userPeople,jdbcType=VARCHAR}, #{homeId,jdbcType=VARCHAR}, #{deleted,jdbcType=TINYINT}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="cn.edu.sdu.ise.labs.model.Myhw" >
+    insert into myhw
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="equipmentName != null" >
+        equipment_name,
+      </if>
+      <if test="equipmentValue != null" >
+        equipment_value,
+      </if>
+      <if test="userPeople != null" >
+        user_people,
+      </if>
+      <if test="homeId != null" >
+        home_id,
+      </if>
+      <if test="deleted != null" >
+        deleted,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="equipmentName != null" >
+        #{equipmentName,jdbcType=VARCHAR},
+      </if>
+      <if test="equipmentValue != null" >
+        #{equipmentValue,jdbcType=VARCHAR},
+      </if>
+      <if test="userPeople != null" >
+        #{userPeople,jdbcType=VARCHAR},
+      </if>
+      <if test="homeId != null" >
+        #{homeId,jdbcType=VARCHAR},
+      </if>
+      <if test="deleted != null" >
+        #{deleted,jdbcType=TINYINT},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="cn.edu.sdu.ise.labs.model.Myhw" >
+    update myhw
+    <set >
+      <if test="equipmentName != null" >
+        equipment_name = #{equipmentName,jdbcType=VARCHAR},
+      </if>
+      <if test="equipmentValue != null" >
+        equipment_value = #{equipmentValue,jdbcType=VARCHAR},
+      </if>
+      <if test="userPeople != null" >
+        user_people = #{userPeople,jdbcType=VARCHAR},
+      </if>
+      <if test="homeId != null" >
+        home_id = #{homeId,jdbcType=VARCHAR},
+      </if>
+      <if test="deleted != null" >
+        deleted = #{deleted,jdbcType=TINYINT},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="cn.edu.sdu.ise.labs.model.Myhw" >
+    update myhw
+    set equipment_name = #{equipmentName,jdbcType=VARCHAR},
+      equipment_value = #{equipmentValue,jdbcType=VARCHAR},
+      user_people = #{userPeople,jdbcType=VARCHAR},
+      home_id = #{homeId,jdbcType=VARCHAR},
+      deleted = #{deleted,jdbcType=TINYINT}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+
+  <!-- 获取名字个数(分页) -->
+  <select id="count" resultType="integer">
+    select count(*)
+    from myhw
+    <where>
+      <if test="equipmentName != null">
+         equipment_name like #{equipmentName}
+      </if>
+      <if test="equipmentValue != null">
+        or equipment_value like #{equipmentValue}
+      </if>
+      <if test="userPeople != null">
+        or user_people like #{userPeople}
+      </if>
+      <if test="homeId != null">
+        or home_id like #{homeId}
+      </if>
+    </where>
+  </select>
+
+  <!-- 获取部门(分页) -->
+  <select id="list" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List"/>
+    from myhw
+    <where>
+      <if test="queryDTO.equipmentName != null">
+         equipment_name like #{queryDTO.equipmentName}
+      </if>
+      <if test="queryDTO.equipmentValue != null">
+        or equipment_value like #{queryDTO.equipmentValue}
+      </if>
+      <if test="queryDTO.userPeople != null">
+        or user_people like #{queryDTO.userPeople}
+      </if>
+      <if test="queryDTO.homeId != null">
+        or home_id like #{queryDTO.homeId}
+      </if>
+    </where>
+    limit #{offset}, #{limit}
+  </select>
+
+  <!-- 批量删除 -->
+  <update id="deleteByCodes">
+    delete from myhw
+    where id in
+    <foreach item="item" index="index" collection="codeList" open="(" separator="," close=")">
+      #{item}
+    </foreach>
+  </update>
+
+  <select id="SumEquipmentValue" resultType = "java.lang.Integer">
+    select sum(equipment_value) as equipmentValue
+    from myhw where user_people = #{userPeople}
+  </select>
+
+  <select id="CountEquipmentNum" resultType = "java.lang.Integer">
+    select count((user_people) ) as countNum
+    from myhw where user_people = #{userPeople}
+  </select>
+
+  <select id="TotalEquipmentValue" resultType = "java.util.Map">
+    select user_people as userPeople,sum(equipment_value) as SumEquipmentValue
+    from myhw group by user_people;
+  </select>
+
+  <select id="TotalEquipmentNum" resultType = "java.util.Map">
+    select user_people as userPeople,count(user_people) as SumEquipmentNum
+    from myhw group by user_people;
+  </select>
+
+</mapper>

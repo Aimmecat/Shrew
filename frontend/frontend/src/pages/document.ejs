@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+    content="width=device-width, initial-scale=1.0, maximum-scale=1, minimum-scale=1, user-scalable=no">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="icon" type="image/x-icon" href="<%= context.config.publicPath %>leishulogo.png" />
+  <link rel="stylesheet" href="<%= context.config.publicPath %>css/main.css" />
+  <title>
+    易文远程访问系统后台管理
+  </title>
+  <!-- <link type="text/css" rel="stylesheet" href="//at.alicdn.com/t/font_879380_5ft6ayfione.css"> -->
+  <script type="text/javascript">
+    function addEvent(el, type, fn, isBubble) {
+      if (el) {
+        if (window.addEventListener) el.addEventListener(type, fn, isBubble);
+        else if (window.attachEvent) el.attachEvent('on' + type, fn, isBubble);
+        else {
+          var onEv = 'on' + type;
+          var onFn = onEv + 'Fn';
+          var onBu = onEv + 'Bu';
+          el[onBu] = isBubble;
+          if (!el[onFn]) {
+            el[onFn] = [];
+            el[onFn].push(fn);
+            el[onEv] = function (e) {
+              var _iteratorNormalCompletion = true;
+              var _didIteratorError = false;
+              var _iteratorError = undefined;
+              try {
+                for (var _iterator = el[onFn][Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step =
+                    _iterator.next()).done); _iteratorNormalCompletion = true) {
+                  ev = _step.value;
+                  ev(e);
+                  if (!isBubble) stopEvent(e);
+                }
+              } catch (err) {
+                _didIteratorError = true;
+                _iteratorError = err;
+              } finally {
+                try {
+                  if (!_iteratorNormalCompletion && _iterator.return) {
+                    _iterator.return();
+                  }
+                } finally {
+                  if (_didIteratorError) {
+                    throw _iteratorError;
+                  }
+                }
+              }
+            };
+          } else {
+            el[onFn].push(fn);
+          }
+        }
+      }
+    }
+    (function (win, doc) {
+      var designWidth = parseInt('<%- context.config.define.designWidth %>'),
+        docEl = doc.documentElement,
+        resizeEvt = 'oritationchange' in window ? 'oritationchange' : 'resize',
+        recalc = function () {
+          var clientWidth = docEl.clientWidth > designWidth ? designWidth : docEl.clientWidth;
+          if (!clientWidth) return;
+          docEl.style.fontSize = 10 * (clientWidth / designWidth) + 'px'; // 设置rem
+        }
+      if (!doc.addEventListener) return;
+      addEvent(win, resizeEvt, recalc, false);
+      addEvent(doc, 'DOMContentLoaded', recalc, false);
+    })(window, document)
+
+  </script>
+</head>
+
+<body>
+  <div id="root"></div>
+</body>
+
+</html>

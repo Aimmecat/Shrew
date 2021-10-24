@@ -1,0 +1,10 @@
+{
+  "originUrl": "http://localhost:8081/v2/api-docs",
+  "templatePath": "./pontTemplate",
+  "outDir": "./src/api",
+  "surrounding": "typeScript",
+  "mocks": {
+    "enable": false
+  },
+  "templateType": "fetch"
+}

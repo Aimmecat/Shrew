@@ -1,0 +1,24 @@
+.filterPanel {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: initial;
+    padding: 10px;
+  
+    .filterItem {
+      display: flex;
+      align-items: center;
+      margin-right: 10px;
+  
+      .label {
+        min-width: 60px;
+        text-align: right;
+      }
+      :global {
+        .ant-input,
+        .ant-select {
+          flex: 1;
+        }
+      }
+    }
+  }
+  
