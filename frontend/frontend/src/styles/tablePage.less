@@ -1,0 +1,101 @@
+@import '~@/styles/common.less';
+@form-item-margin-top: 1rem;
+.contentWrap {
+  .filterWrap {
+    .longer-item {
+      width: 35% !important;
+      :global {
+        label {
+          width: 100%;
+        }
+        .ant-select {
+          overflow: hidden;
+        }
+      }
+    }
+    .top-gap-item {
+      margin-top: @form-item-margin-top;
+    }
+
+    .site-input-split {
+      background-color: #fff;
+    }
+
+    .site-input-right {
+      border-left-width: 0px;
+    }
+
+    .site-input-right:hover,
+    .site-input-right:focus {
+      border-left-width: 1px;
+    }
+
+    :global {
+      .ant-form {
+        margin-top: 0.5rem;
+        & > :nth-child(1n + 5) {
+          margin-top: @form-item-margin-top;
+        }
+        .ant-form-item {
+          width: 24%;
+          margin-right: 1%;
+          .ant-form-item-label {
+            flex: auto;
+          }
+          &:last-child {
+            flex: 2;
+            margin-right: 3% !important;
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+            :global {
+              .ant-form-item-control-input-content {
+                display: flex;
+                justify-content: flex-end;
+                align-items: center;
+                & > :last-child {
+                  margin-left: 1.6rem;
+                }
+              }
+            }
+          }
+          .ant-picker {
+            width: 100%;
+          }
+        }
+      }
+    }
+    margin-bottom: 2rem;
+  }
+  .tableWrap {
+    background: white;
+    padding: 2.4rem 2.5rem;
+
+    .handleBts {
+      margin-bottom: 1.6rem;
+      :global {
+        .ant-btn {
+          // border-radius: 4px;
+          overflow: hidden;
+        }
+      }
+
+      :not(:first-child) {
+        margin-left: 1.6rem;
+      }
+      .upload-button {
+        margin-left: 0;
+      }
+    }
+
+    .rowblack {
+      color: black;
+    }
+    .rowBlue {
+      color: #00c0ff;
+    }
+    .rowRed {
+      color: #ff2110;
+    }
+  }
+}

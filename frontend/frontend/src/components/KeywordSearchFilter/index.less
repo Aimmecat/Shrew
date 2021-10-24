@@ -1,0 +1,45 @@
+.filterPanel {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: initial;
+  padding: 10px;
+
+  .filterItem {
+    display: flex;
+    align-items: center;
+    margin-right: 10px;
+    width: 300px;
+
+    .label {
+      min-width: 60px;
+      text-align: right;
+    }
+    :global {
+      .ant-input,
+      .ant-select {
+        flex: 1;
+      }
+    }
+  }
+}
+
+.form {
+  width: 350px;
+  margin-top: 20px;
+  .formRow {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: initial;
+    padding-bottom: 20px;
+  }
+  .formLabel {
+    width: 80px;
+    text-align: right;
+    margin-right: 5px;
+  }
+  :global {
+    .ant-form-item {
+      margin-bottom: 5px;
+    }
+  }
+}

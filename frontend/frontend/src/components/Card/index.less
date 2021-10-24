@@ -1,0 +1,43 @@
+@import '../../styles/common.less';
+
+.card {
+  background: white;
+  width: 100%;
+
+  .title {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    height: 50px;
+    padding: 0 20px;
+    border-bottom: 1px solid @border-color;
+
+    .titleLeft {
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+      color: @text-color;
+      font-size: 16px;
+
+      &::before {
+        content: '';
+        display: inline-block;
+        height: 16px;
+        width: 4px;
+        background: @primary;
+        margin-right: 15px;
+      }
+    }
+
+    .titleRight {
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+    }
+  }
+
+  .content {
+    padding: 1rem 2rem;
+  }
+}

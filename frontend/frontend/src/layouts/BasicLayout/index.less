@@ -1,0 +1,82 @@
+@import '~@/styles/common.less';
+
+.layout {
+  height: 100%;
+
+  .header {
+    background: white;
+    height: 70px;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    width: 100%;
+    .title {
+      height: 100%;
+      flex: 1;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-left: 2rem;
+
+      .titleText {
+        font-size: 16pt;
+        font-weight: bold;
+      }
+
+      .userInfo {
+        width: 200px;
+        padding-left: 60px;
+        display: flex;
+        align-items: center;
+        background-image: url('~@/assets/home/loginOut_bg.png');
+        background-size: cover;
+
+        .avatar {
+          height: 32px;
+          width: 32px;
+        }
+
+        .userName {
+          cursor: pointer;
+          margin-left: 1rem;
+          color: white;
+
+          .name {
+            margin-right: 0.5rem;
+          }
+        }
+      }
+    }
+  }
+
+  .side {
+    overflow: auto;
+    :global {
+      .ant-menu-item-selected {
+        span {
+          color: @primary;
+        }
+      }
+      .ant-menu-dark .ant-menu-inline.ant-menu-sub {
+        background: #1d7aff;
+      }
+    }
+  }
+
+  .contentWrap {
+    margin: 1.5rem;
+    .content {
+      padding: 1rem 0;
+      height: calc(100% - 3rem);
+      :global {
+        .ant-tabs {
+          width: 100%;
+        }
+
+        .ant-tabs-bar {
+          margin-bottom: 0;
+        }
+      }
+    }
+  }
+}
