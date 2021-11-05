@@ -37,115 +37,7 @@
       #{pm10,jdbcType=INTEGER}, #{temperature,jdbcType=INTEGER}, #{humidity,jdbcType=INTEGER}, 
       #{time,jdbcType=TIMESTAMP})
   </insert>
-  <insert id="insertSelective" parameterType="cn.edu.sdu.ise.labs.model.Iot_data" >
-    insert into iot_data
-    <trim prefix="(" suffix=")" suffixOverrides="," >
-      <if test="id != null" >
-        id,
-      </if>
-      <if test="equipmentId != null" >
-        equipment_id,
-      </if>
-      <if test="location != null" >
-        location,
-      </if>
-      <if test="co2 != null" >
-        co2,
-      </if>
-      <if test="ch2o != null" >
-        ch2o,
-      </if>
-      <if test="tvoc != null" >
-        tvoc,
-      </if>
-      <if test="pm25 != null" >
-        pm25,
-      </if>
-      <if test="pm10 != null" >
-        pm10,
-      </if>
-      <if test="temperature != null" >
-        temperature,
-      </if>
-      <if test="humidity != null" >
-        humidity,
-      </if>
-      <if test="time != null" >
-        time,
-      </if>
-    </trim>
-    <trim prefix="values (" suffix=")" suffixOverrides="," >
-      <if test="id != null" >
-        #{id,jdbcType=INTEGER},
-      </if>
-      <if test="equipmentId != null" >
-        #{equipmentId,jdbcType=VARCHAR},
-      </if>
-      <if test="location != null" >
-        #{location,jdbcType=VARCHAR},
-      </if>
-      <if test="co2 != null" >
-        #{co2,jdbcType=INTEGER},
-      </if>
-      <if test="ch2o != null" >
-        #{ch2o,jdbcType=INTEGER},
-      </if>
-      <if test="tvoc != null" >
-        #{tvoc,jdbcType=INTEGER},
-      </if>
-      <if test="pm25 != null" >
-        #{pm25,jdbcType=INTEGER},
-      </if>
-      <if test="pm10 != null" >
-        #{pm10,jdbcType=INTEGER},
-      </if>
-      <if test="temperature != null" >
-        #{temperature,jdbcType=INTEGER},
-      </if>
-      <if test="humidity != null" >
-        #{humidity,jdbcType=INTEGER},
-      </if>
-      <if test="time != null" >
-        #{time,jdbcType=TIMESTAMP},
-      </if>
-    </trim>
-  </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="cn.edu.sdu.ise.labs.model.Iot_data" >
-    update iot_data
-    <set >
-      <if test="equipmentId != null" >
-        equipment_id = #{equipmentId,jdbcType=VARCHAR},
-      </if>
-      <if test="location != null" >
-        location = #{location,jdbcType=VARCHAR},
-      </if>
-      <if test="co2 != null" >
-        co2 = #{co2,jdbcType=INTEGER},
-      </if>
-      <if test="ch2o != null" >
-        ch2o = #{ch2o,jdbcType=INTEGER},
-      </if>
-      <if test="tvoc != null" >
-        tvoc = #{tvoc,jdbcType=INTEGER},
-      </if>
-      <if test="pm25 != null" >
-        pm25 = #{pm25,jdbcType=INTEGER},
-      </if>
-      <if test="pm10 != null" >
-        pm10 = #{pm10,jdbcType=INTEGER},
-      </if>
-      <if test="temperature != null" >
-        temperature = #{temperature,jdbcType=INTEGER},
-      </if>
-      <if test="humidity != null" >
-        humidity = #{humidity,jdbcType=INTEGER},
-      </if>
-      <if test="time != null" >
-        time = #{time,jdbcType=TIMESTAMP},
-      </if>
-    </set>
-    where id = #{id,jdbcType=INTEGER}
-  </update>
+
   <update id="updateByPrimaryKey" parameterType="cn.edu.sdu.ise.labs.model.Iot_data" >
     update iot_data
     set equipment_id = #{equipmentId,jdbcType=VARCHAR},
@@ -160,4 +52,44 @@
       time = #{time,jdbcType=TIMESTAMP}
     where id = #{id,jdbcType=INTEGER}
   </update>
+
+  <!-- 批量删除 -->
+  <update id="deleteByCodes">
+    delete from iot_data
+    where id in
+    <foreach item="item" index="index" collection="codeList" open="(" separator="," close=")">
+      #{item}
+    </foreach>
+  </update>
+
+  <!-- 获取名字个数(分页) -->
+  <select id="count" resultType="integer">
+    select count(*)
+    from iot_data
+    <where>
+      <if test="equipmentId != null">
+        equipment_id like #{equipmentId}
+      </if>
+      <if test="location != null">
+        or location like #{location}
+      </if>
+    </where>
+  </select>
+
+  <!-- 获取数据(分页) -->
+  <select id="list" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List"/>
+    from iot_data
+    <where>
+      <if test="queryDTO.equipmentId != null">
+        equipment_id like #{queryDTO.equipmentId}
+      </if>
+      <if test="queryDTO.location != null">
+        or location like #{queryDTO.location}
+      </if>
+    </where>
+    limit #{offset}, #{limit}
+  </select>
+
 </mapper>

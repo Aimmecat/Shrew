@@ -1,6 +1,7 @@
 package cn.edu.sdu.ise.labs.service.utils;
 
 import cn.edu.sdu.ise.labs.dto.Iot_dataDTO;
+import cn.edu.sdu.ise.labs.model.Iot_data;
 import cn.edu.sdu.ise.labs.utils.FormatUtils;
 import cn.edu.sdu.ise.labs.vo.Iot_dataVO;
 import org.springframework.beans.BeanUtils;
@@ -15,9 +16,9 @@ public class Iot_dataUtils {
         Assert.hasText(iotDataDTO.getLocation(),"设备安装地点不能为空！");
     }
 
-    public static Iot_dataVO convertToVO(Iot_dataDTO iotDataDTO) {
+        public static Iot_dataVO convertToVO(Iot_data iotData) {
         Iot_dataVO iotDataVO = new Iot_dataVO();
-        BeanUtils.copyProperties(iotDataDTO, iotDataVO);
+        BeanUtils.copyProperties(iotData, iotDataVO);
         return iotDataVO;
     }
 }

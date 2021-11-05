@@ -27,5 +27,4 @@ public class Iot_data {
     private Integer humidity;
 
     private Date time;
-
 }
