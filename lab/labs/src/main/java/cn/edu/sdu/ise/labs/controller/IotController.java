@@ -2,6 +2,7 @@ package cn.edu.sdu.ise.labs.controller;
 
 import cn.edu.sdu.ise.labs.annotation.NeedNoToken;
 import cn.edu.sdu.ise.labs.dto.Iot_dataDTO;
+import cn.edu.sdu.ise.labs.dto.MyhwDTO;
 import cn.edu.sdu.ise.labs.dto.query.Iot_dataQueryDTO;
 import cn.edu.sdu.ise.labs.dto.query.MyhwQueryDTO;
 import cn.edu.sdu.ise.labs.model.Page;
@@ -36,6 +37,11 @@ public class IotController {
     public String delete(@RequestBody List<Integer> ids) {
         iotService.deleteByCodes(ids);
         return "Delete Success!";
+    }
+
+    @PostMapping("update")
+    public Integer update(@RequestBody Iot_dataDTO iotDataDTO) {
+        return iotService.updateIotInfo(iotDataDTO);
     }
 
     @PostMapping("list")
