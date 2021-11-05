@@ -4,7 +4,7 @@
  * @作者: 李洪文
  * @Date: 2020-04-09 17:51:27
  * @LastEditors: Please set LastEditors
- * @LastEditTime: 2021-04-19 21:59:35
+ * @LastEditTime: 2021-11-05 14:23:43
  */
 
 import { useEffect } from 'react';
@@ -67,7 +67,7 @@ function Login() {
     <div className={styles.loginWrap}>
       <div className={styles.img} />
       <div className={styles.loginContent}>
-        <strong className={styles.title}>实验室设备管理系统</strong>
+        <strong className={styles.title}>NO.1小组IOT平台</strong>
         <Form
           name="nest-messages"
           form={form}
