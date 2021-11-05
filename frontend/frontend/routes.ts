@@ -4,7 +4,7 @@
  * @作者: 李洪文
  * @Date: 2020-05-20 10:31:07
  * @LastEditors: Please set LastEditors
- * @LastEditTime: 2021-11-05 14:39:08
+ * @LastEditTime: 2021-11-06 01:06:17
  */
 
 export const routes = [
@@ -30,11 +30,15 @@ export const routes = [
           },
           {
             path: '/base/myhw',
-            component: './base/myhw'
+            component: './base/myhw',
           },
           {
             path: '/base/IOT_Data',
-            component: './base/IOT_Data'
+            component: './base/IOT_Data',
+          },
+          {
+            path: '/base/Map',
+            component: './base/Map',
           },
         ],
       },

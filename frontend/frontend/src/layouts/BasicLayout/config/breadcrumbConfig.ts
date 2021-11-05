@@ -4,7 +4,7 @@
  * @作者: 李洪文
  * @Date: 2019-05-31 10:35:10
  * @LastEditors: Please set LastEditors
- * @LastEditTime: 2021-11-05 14:39:12
+ * @LastEditTime: 2021-11-06 01:08:59
  */
 
 export const routes = [
@@ -21,12 +21,12 @@ export const routes = [
         ],
       },
       {
-        path: '/department',
-        breadcrumbName: '部门管理',
+        path: '/IOT_Data',
+        breadcrumbName: 'IOT信息',
       },
       {
-        path:'/myhw',
-        breadcrumbName:'我的作业'
+        path:'/Map',
+        breadcrumbName:'地图'
       }
     ],
   },

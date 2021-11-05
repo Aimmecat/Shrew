@@ -4,7 +4,7 @@
  * @作者: 李洪文
  * @Date: 2020-09-02 12:39:47
  * @LastEditors: Please set LastEditors
- * @LastEditTime: 2021-04-03 16:02:17
+ * @LastEditTime: 2021-11-06 02:35:01
  */
 // 山大联调地址
 import { ButtonType } from 'antd/lib/button';
@@ -26,6 +26,19 @@ export const DEFAULT_PAGE_DATA = {
 export const DEFAULT_SEARCH_PROPS = {
   page: 1,
   pageSize: PAGE_SIZE,
+};
+
+export const DEFAULT_MAP_LOCATION = {
+  height: 900,
+  longitude: 120.414721,
+  latitude: 36.072530,
+  zoom: 16,
+  tilt: 40,
+};
+
+export const DEFAULT_EQUIPMENT_LOCATION = {
+  longitude: 120.414721,
+  latitude: 36.072530,
 };
 
 export function getPageAfterDelete(pageData: any, deleteCount: number) {

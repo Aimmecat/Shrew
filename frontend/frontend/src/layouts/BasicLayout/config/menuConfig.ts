@@ -4,14 +4,12 @@
  * @作者: 李洪文
  * @Date: 2019-06-13 10:35:10
  * @LastEditors: Please set LastEditors
- * @LastEditTime: 2021-11-05 14:38:31
+ * @LastEditTime: 2021-11-06 02:44:19
  */
 
 import {
   HomeOutlined,
   SettingOutlined,
-  AreaChartOutlined,
-  UnorderedListOutlined,
 } from '@ant-design/icons';
 
 const menuConfig = [
@@ -35,6 +33,11 @@ const menuConfig = [
         key: 'IOT_Data',
         link: '/base/IOT_Data',
         name: 'IOT平台数据上报'
+      },
+      {
+        key: 'Map',
+        link: '/base/Map',
+        name: '地图'
       },
     ],
   },
