@@ -37,13 +37,13 @@
     "lscache": "^1.3.0",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
-    "umi": "^3.3.9"
+    "umi": "^3.5.0"
   },
   "devDependencies": {
+    "@types/echarts": "^4.9.4",
     "@types/lscache": "^1.3.0",
     "@typescript-eslint/eslint-plugin": "^4.16.1",
     "@typescript-eslint/parser": "^4.16.1",
-    "@types/echarts": "^4.9.4",
     "antd-dayjs-webpack-plugin": "^1.0.6",
     "eslint": "^7.21.0",
     "eslint-config-prettier": "^8.1.0",
@@ -55,5 +55,12 @@
     "pont-engine": "^1.0.13",
     "prettier": "^2.2.1",
     "umi-webpack-bundle-analyzer": "^3.6.0"
-  }
+  },
+  "name": "frontend",
+  "description": "<!--\r  * @文件描述: readme文件\r  * @公司: 山东大学\r  * @作者: NO.1小组\r  * @Date: 2020-04-09 17:15:49\r  * @LastEditors: 李洪文\r  * @LastEditTime: 2020-05-20 10:35:50\r --> \r # umi project",
+  "version": "1.0.0",
+  "main": ".eslintrc.js",
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
 }

@@ -50,6 +50,7 @@ public class DepartmentController {
 
     @PostMapping("getByCode")
     public String getByCode(){
-        return "Hello,world";
+        return "Hello,world！！";
     }
+    
 }
