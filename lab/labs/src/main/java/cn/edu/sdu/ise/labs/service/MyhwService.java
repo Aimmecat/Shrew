@@ -14,9 +14,7 @@ public interface MyhwService {
 
     Integer addMyhw(MyhwDTO myhwDTO);
 
-
     void deleteByCodes(@Param("codeList") List<Integer> ids);
-
 
     Integer updateMyhw(MyhwDTO myhwDTO);
 

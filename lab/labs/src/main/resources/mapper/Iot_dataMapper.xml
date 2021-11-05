@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.edu.sdu.ise.labs.dao.Iot_dataMapper" >
+  <resultMap id="BaseResultMap" type="cn.edu.sdu.ise.labs.model.Iot_data" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="equipment_id" property="equipmentId" jdbcType="VARCHAR" />
+    <result column="location" property="location" jdbcType="VARCHAR" />
+    <result column="co2" property="co2" jdbcType="INTEGER" />
+    <result column="ch2o" property="ch2o" jdbcType="INTEGER" />
+    <result column="tvoc" property="tvoc" jdbcType="INTEGER" />
+    <result column="pm25" property="pm25" jdbcType="INTEGER" />
+    <result column="pm10" property="pm10" jdbcType="INTEGER" />
+    <result column="temperature" property="temperature" jdbcType="INTEGER" />
+    <result column="humidity" property="humidity" jdbcType="INTEGER" />
+    <result column="time" property="time" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, equipment_id, location, co2, ch2o, tvoc, pm25, pm10, temperature, humidity, time
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from iot_data
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from iot_data
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="cn.edu.sdu.ise.labs.model.Iot_data" >
+    insert into iot_data (id, equipment_id, location, 
+      co2, ch2o, tvoc, pm25, 
+      pm10, temperature, humidity, 
+      time)
+    values (#{id,jdbcType=INTEGER}, #{equipmentId,jdbcType=VARCHAR}, #{location,jdbcType=VARCHAR}, 
+      #{co2,jdbcType=INTEGER}, #{ch2o,jdbcType=INTEGER}, #{tvoc,jdbcType=INTEGER}, #{pm25,jdbcType=INTEGER}, 
+      #{pm10,jdbcType=INTEGER}, #{temperature,jdbcType=INTEGER}, #{humidity,jdbcType=INTEGER}, 
+      #{time,jdbcType=TIMESTAMP})
+  </insert>
+
+  <update id="updateByPrimaryKey" parameterType="cn.edu.sdu.ise.labs.model.Iot_data" >
+    update iot_data
+    set equipment_id = #{equipmentId,jdbcType=VARCHAR},
+      location = #{location,jdbcType=VARCHAR},
+      co2 = #{co2,jdbcType=INTEGER},
+      ch2o = #{ch2o,jdbcType=INTEGER},
+      tvoc = #{tvoc,jdbcType=INTEGER},
+      pm25 = #{pm25,jdbcType=INTEGER},
+      pm10 = #{pm10,jdbcType=INTEGER},
+      temperature = #{temperature,jdbcType=INTEGER},
+      humidity = #{humidity,jdbcType=INTEGER},
+      time = #{time,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+
+  <!-- 批量删除 -->
+  <update id="deleteByCodes">
+    delete from iot_data
+    where id in
+    <foreach item="item" index="index" collection="codeList" open="(" separator="," close=")">
+      #{item}
+    </foreach>
+  </update>
+
+  <!-- 获取名字个数(分页) -->
+  <select id="count" resultType="integer">
+    select count(*)
+    from iot_data
+    <where>
+      <if test="equipmentId != null">
+        equipment_id like #{equipmentId}
+      </if>
+      <if test="location != null">
+        or location like #{location}
+      </if>
+    </where>
+  </select>
+
+  <!-- 获取数据(分页) -->
+  <select id="list" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List"/>
+    from iot_data
+    <where>
+      <if test="queryDTO.equipmentId != null">
+        equipment_id like #{queryDTO.equipmentId}
+      </if>
+      <if test="queryDTO.location != null">
+        or location like #{queryDTO.location}
+      </if>
+    </where>
+    limit #{offset}, #{limit}
+  </select>
+
+</mapper>

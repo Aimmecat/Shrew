@@ -30,70 +30,7 @@
       #{userPeople,jdbcType=VARCHAR}, #{homeId,jdbcType=VARCHAR}, #{deleted,jdbcType=TINYINT}
       )
   </insert>
-  <insert id="insertSelective" parameterType="cn.edu.sdu.ise.labs.model.Myhw" >
-    insert into myhw
-    <trim prefix="(" suffix=")" suffixOverrides="," >
-      <if test="id != null" >
-        id,
-      </if>
-      <if test="equipmentName != null" >
-        equipment_name,
-      </if>
-      <if test="equipmentValue != null" >
-        equipment_value,
-      </if>
-      <if test="userPeople != null" >
-        user_people,
-      </if>
-      <if test="homeId != null" >
-        home_id,
-      </if>
-      <if test="deleted != null" >
-        deleted,
-      </if>
-    </trim>
-    <trim prefix="values (" suffix=")" suffixOverrides="," >
-      <if test="id != null" >
-        #{id,jdbcType=INTEGER},
-      </if>
-      <if test="equipmentName != null" >
-        #{equipmentName,jdbcType=VARCHAR},
-      </if>
-      <if test="equipmentValue != null" >
-        #{equipmentValue,jdbcType=VARCHAR},
-      </if>
-      <if test="userPeople != null" >
-        #{userPeople,jdbcType=VARCHAR},
-      </if>
-      <if test="homeId != null" >
-        #{homeId,jdbcType=VARCHAR},
-      </if>
-      <if test="deleted != null" >
-        #{deleted,jdbcType=TINYINT},
-      </if>
-    </trim>
-  </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="cn.edu.sdu.ise.labs.model.Myhw" >
-    update myhw
-    <set >
-      <if test="equipmentName != null" >
-        equipment_name = #{equipmentName,jdbcType=VARCHAR},
-      </if>
-      <if test="equipmentValue != null" >
-        equipment_value = #{equipmentValue,jdbcType=VARCHAR},
-      </if>
-      <if test="userPeople != null" >
-        user_people = #{userPeople,jdbcType=VARCHAR},
-      </if>
-      <if test="homeId != null" >
-        home_id = #{homeId,jdbcType=VARCHAR},
-      </if>
-      <if test="deleted != null" >
-        deleted = #{deleted,jdbcType=TINYINT},
-      </if>
-    </set>
-    where id = #{id,jdbcType=INTEGER}
-  </update>
+
   <update id="updateByPrimaryKey" parameterType="cn.edu.sdu.ise.labs.model.Myhw" >
     update myhw
     set equipment_name = #{equipmentName,jdbcType=VARCHAR},

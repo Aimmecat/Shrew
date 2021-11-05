@@ -1,0 +1,33 @@
+.container {
+  width: 100%;
+}
+.container .table {
+  padding: 0 0.5rem 0;
+  background-color: white;
+}
+.container .topbar {
+  background-color: white;
+  width: 100%;
+  display: flex;
+  margin-bottom: 1rem;
+}
+.container .btnwrap {
+  background-color: white;
+  padding: 1rem;
+  width: 100%;
+}
+.container .btnwrap .btn {
+  margin-right: 1rem;
+}
+.container .bottombar {
+  background-color: white;
+  padding: 1rem;
+  display: flex;
+}
+.container .bottombar .pageInfo {
+  margin-left: 1rem;
+}
+.container .bottombar .pagination {
+  text-align: right;
+  flex: 1;
+}

@@ -4,7 +4,7 @@
  * @作者: 李洪文
  * @Date: 2019-06-13 10:35:10
  * @LastEditors: Please set LastEditors
- * @LastEditTime: 2021-04-20 15:36:29
+ * @LastEditTime: 2021-11-05 14:38:31
  */
 
 import {
@@ -31,24 +31,10 @@ const menuConfig = [
         link: '/base/myhw',
         name: '实验室设备管理系统'
       },
-    ],
-  },
-  {
-    key: 'system',
-    link: '',
-    icon: SettingOutlined,
-    name: '系统管理',
-
-    children: [
       {
-        key: 'config',
-        link: '/system/config',
-        name: '参数设置',
-      },
-      {
-        key: 'network',
-        link: '/system/network',
-        name: '网络设置',
+        key: 'IOT_Data',
+        link: '/base/IOT_Data',
+        name: 'IOT平台数据上报'
       },
     ],
   },
