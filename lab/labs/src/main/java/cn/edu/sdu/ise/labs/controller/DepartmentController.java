@@ -52,5 +52,5 @@ public class DepartmentController {
     public String getByCode(){
         return "Hello,world！！";
     }
-    
+
 }

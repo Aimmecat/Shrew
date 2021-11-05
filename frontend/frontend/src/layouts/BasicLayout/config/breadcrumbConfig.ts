@@ -4,7 +4,7 @@
  * @作者: 李洪文
  * @Date: 2019-05-31 10:35:10
  * @LastEditors: Please set LastEditors
- * @LastEditTime: 2021-04-16 10:35:16
+ * @LastEditTime: 2021-11-05 14:39:12
  */
 
 export const routes = [
@@ -25,31 +25,9 @@ export const routes = [
         breadcrumbName: '部门管理',
       },
       {
-        path:'/myMod',
-        breadcrumbName:'我的模块'
-      },
-      {
         path:'/myhw',
         breadcrumbName:'我的作业'
       }
-    ],
-  },
-  {
-    path: '/system',
-    breadcrumbName: '系统管理',
-    children: [
-      {
-        path: '/config',
-        breadcrumbName: '参数设置',
-      },
-      {
-        path: '/network',
-        breadcrumbName: '网络设置',
-      },
-      {
-        path: '/department',
-        breadcrumbName: '部门管理',
-      },
     ],
   },
 ];
