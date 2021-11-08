@@ -7,6 +7,7 @@ import cn.edu.sdu.ise.labs.model.Myhw;
 import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
+import java.util.Map;
 
 public interface Iot_dataMapper {
     Iot_data selectByPrimaryKey(Integer id);
@@ -22,4 +23,6 @@ public interface Iot_dataMapper {
     void deleteByCodes(@Param("codeList") List<Integer> ids);
 
     List<Iot_data> list(Iot_dataQueryDTO queryDTO, Integer offset, Integer limit);
+
+    List<Map> getLocationData();
 }

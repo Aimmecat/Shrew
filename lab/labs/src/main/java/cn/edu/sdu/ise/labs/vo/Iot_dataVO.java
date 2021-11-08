@@ -30,4 +30,8 @@ public class Iot_dataVO {
     private Integer humidity;
 
     private Date time;
+
+    private Double longitude;
+
+    private Double latitude;
 }

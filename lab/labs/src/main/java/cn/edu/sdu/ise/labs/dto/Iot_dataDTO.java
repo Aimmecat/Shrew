@@ -27,4 +27,8 @@ public class Iot_dataDTO {
     private Integer humidity;
 
     private Date time;
+
+    private Double longitude;
+
+    private Double latitude;
 }
