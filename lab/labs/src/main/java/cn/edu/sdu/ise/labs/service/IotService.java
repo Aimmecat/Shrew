@@ -8,6 +8,7 @@ import cn.edu.sdu.ise.labs.vo.Iot_dataVO;
 import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
+import java.util.Map;
 
 public interface IotService {
 
@@ -18,4 +19,6 @@ public interface IotService {
     void deleteByCodes(@Param("codeList") List<Integer> ids);
 
     Integer updateIotInfo(Iot_dataDTO iotDataDTO);
+
+    List<Map> GetIotData();
 }

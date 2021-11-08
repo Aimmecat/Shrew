@@ -13,9 +13,12 @@
     <result column="temperature" property="temperature" jdbcType="INTEGER" />
     <result column="humidity" property="humidity" jdbcType="INTEGER" />
     <result column="time" property="time" jdbcType="TIMESTAMP" />
+    <result column="longitude" property="longitude" jdbcType="DOUBLE" />
+    <result column="latitude" property="latitude" jdbcType="DOUBLE" />
   </resultMap>
   <sql id="Base_Column_List" >
-    id, equipment_id, location, co2, ch2o, tvoc, pm25, pm10, temperature, humidity, time
+    id, equipment_id, location, co2, ch2o, tvoc, pm25, pm10, temperature, humidity, time, 
+    longitude, latitude
   </sql>
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
     select 
@@ -31,11 +34,13 @@
     insert into iot_data (id, equipment_id, location, 
       co2, ch2o, tvoc, pm25, 
       pm10, temperature, humidity, 
-      time)
+      time, longitude, latitude
+      )
     values (#{id,jdbcType=INTEGER}, #{equipmentId,jdbcType=VARCHAR}, #{location,jdbcType=VARCHAR}, 
       #{co2,jdbcType=INTEGER}, #{ch2o,jdbcType=INTEGER}, #{tvoc,jdbcType=INTEGER}, #{pm25,jdbcType=INTEGER}, 
       #{pm10,jdbcType=INTEGER}, #{temperature,jdbcType=INTEGER}, #{humidity,jdbcType=INTEGER}, 
-      #{time,jdbcType=TIMESTAMP})
+      #{time,jdbcType=TIMESTAMP}, #{longitude,jdbcType=DOUBLE}, #{latitude,jdbcType=DOUBLE}
+      )
   </insert>
 
   <update id="updateByPrimaryKey" parameterType="cn.edu.sdu.ise.labs.model.Iot_data" >
@@ -49,7 +54,9 @@
       pm10 = #{pm10,jdbcType=INTEGER},
       temperature = #{temperature,jdbcType=INTEGER},
       humidity = #{humidity,jdbcType=INTEGER},
-      time = #{time,jdbcType=TIMESTAMP}
+      time = #{time,jdbcType=TIMESTAMP},
+      longitude = #{longitude,jdbcType=DOUBLE},
+      latitude = #{latitude,jdbcType=DOUBLE}
     where id = #{id,jdbcType=INTEGER}
   </update>
 
@@ -90,6 +97,11 @@
       </if>
     </where>
     limit #{offset}, #{limit}
+  </select>
+
+  <select id="getLocationData" resultType = "java.util.Map">
+    select longitude,latitude,equipment_id
+    from iot_data group by id;
   </select>
 
 </mapper>

@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
+import java.util.Map;
 
 /**
  * @author Aimmecat
@@ -48,5 +49,9 @@ public class IotController {
     public Page<Iot_dataVO> list(@RequestBody Iot_dataQueryDTO queryDTO) {
         return iotService.listByPage(queryDTO);
     }
-    
+
+    @PostMapping("getIotData")
+    public List<Map> getIotData() {
+        return iotService.GetIotData();
+    }
 }

@@ -4,12 +4,10 @@ import cn.edu.sdu.ise.labs.dao.Iot_dataMapper;
 import cn.edu.sdu.ise.labs.dto.Iot_dataDTO;
 import cn.edu.sdu.ise.labs.dto.query.Iot_dataQueryDTO;
 import cn.edu.sdu.ise.labs.model.Iot_data;
-import cn.edu.sdu.ise.labs.model.Myhw;
 import cn.edu.sdu.ise.labs.model.Page;
 import cn.edu.sdu.ise.labs.model.Token;
 import cn.edu.sdu.ise.labs.service.IotService;
 import cn.edu.sdu.ise.labs.service.utils.Iot_dataUtils;
-import cn.edu.sdu.ise.labs.service.utils.MyhwUtils;
 import cn.edu.sdu.ise.labs.utils.FormatUtils;
 import cn.edu.sdu.ise.labs.utils.PageUtils;
 import cn.edu.sdu.ise.labs.utils.TokenContextHolder;
@@ -21,6 +19,7 @@ import org.springframework.util.Assert;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 /**
  * @author Aimmecat
@@ -95,6 +94,11 @@ public class IotServiceImpl implements IotService {
         iotData.setTime(oldIotData.getTime());
         iotDataMapper.updateByPrimaryKey(iotData);
         return iotData.getId();
+    }
+
+    @Override
+    public List<Map> GetIotData() {
+        return iotDataMapper.getLocationData();
     }
 
 
